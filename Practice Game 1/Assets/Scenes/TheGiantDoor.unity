@@ -360,9 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682f2c3f6bafad043b33eb78224195f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 12
+  jumpHeight: 4
   jumpLength: 0.5
-  jumping: 0
   fallMultiplier: 1
   lowJumpMultiplier: 1.5
   groundCheck: {fileID: 806095928}

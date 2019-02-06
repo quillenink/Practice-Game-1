@@ -6,11 +6,12 @@ public class Player : MonoBehaviour
 {
     //jump
     public float jumpHeight;
-    public float jumpLength;
-    private float jumpTime;
-    [SerializeField] bool jumping;
+    //public float jumpLength;
+    //private float jumpTime;
+    //[SerializeField] bool jumping;
     public float fallMultiplier;
     public float lowJumpMultiplier;
+    private bool hasDoubleJumped;
 
     //grounded check
     public Transform groundCheck;
@@ -40,8 +41,13 @@ public class Player : MonoBehaviour
         //debugging
         velocityTracker = rigidbody.velocity.x;
 
+        if (grounded)
+        {
+            hasDoubleJumped = false;
+        }
+
         //x axis facing
-        if(transform.position.x != isMoving)
+        if (transform.position.x != isMoving)
         {
             if(transform.position.x > isMoving)
             {
@@ -64,19 +70,16 @@ public class Player : MonoBehaviour
         }
 
         //jump
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !hasDoubleJumped)
         {
             rigidbody.velocity = Vector2.up * jumpHeight;
+            if (!grounded)
+            {
+                hasDoubleJumped = true;
+            }
         }
-        if(rigidbody.velocity.y < 0)
-        {
-            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
-        }
-        else if(rigidbody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
-        {
-            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
-        }*/
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+
+        /*if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             jumping = true;
             jumpTime = jumpLength;
@@ -94,7 +97,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             jumping = false;
-        }
+        }*/
         
         
     }
@@ -102,20 +105,23 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-        if (jumping)
+
+        if (rigidbody.velocity.y < 0)
+        {
+            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
+        }
+        else if (rigidbody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rigidbody.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
+        }
+
+        /*if (jumping)
         {
             rigidbody.AddForce(Vector2.up * (jumpHeight));
             //rigidbody.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
-        }
-        
+        }*/
+
     }
 
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Ground")
-        {
-            jumpTime = jumpLength;
-        }
-    }*/
 
 }
