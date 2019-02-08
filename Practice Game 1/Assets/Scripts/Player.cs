@@ -26,13 +26,19 @@ public class Player : MonoBehaviour
     //x axis facing
     private float isMoving;
 
+    //air vent
+    public float ventForce;
+    public bool onAirVent;
+    private float gravityStore;
+
     //debugging
     [SerializeField] float velocityTracker;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gravityStore = rigidbody.gravityScale;
+        onAirVent = false;
     }
 
     // Update is called once per frame
@@ -113,6 +119,16 @@ public class Player : MonoBehaviour
         else if (rigidbody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
             rigidbody.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
+        }
+
+        if (onAirVent)
+        {
+            rigidbody.gravityScale = 0f;
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, ventForce);
+        }
+        if (!onAirVent)
+        {
+            rigidbody.gravityScale = gravityStore;
         }
 
         /*if (jumping)
