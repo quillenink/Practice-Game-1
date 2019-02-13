@@ -121,6 +121,7 @@ public class Player : MonoBehaviour
             rigidbody.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
         }
 
+        //air vent
         if (onAirVent)
         {
             rigidbody.gravityScale = 0f;
