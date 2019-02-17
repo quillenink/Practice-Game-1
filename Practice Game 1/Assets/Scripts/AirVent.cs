@@ -11,6 +11,7 @@ public class AirVent : MonoBehaviour
     public float ventToggleSpeed;
     private float ventToggleCounter;
     public GameObject ventParticle;
+    public bool standingOnVent;
 
     private Player player;
 
@@ -19,6 +20,7 @@ public class AirVent : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         ventToggleCounter = ventToggleSpeed;
+        standingOnVent = false;
     }
 
     // Update is called once per frame
@@ -34,6 +36,10 @@ public class AirVent : MonoBehaviour
                 ventOn = !ventOn;
                 ventToggleCounter = ventToggleSpeed;
                 VentParticleToggle();
+                if(standingOnVent && ventOn)
+                {
+                    player.onAirVent = true;
+                }
             }
             
         }
@@ -41,9 +47,14 @@ public class AirVent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player" && ventOn)
+        if(collision.gameObject.tag == "Player")
         {
-            player.onAirVent = true;
+            
+            standingOnVent = true;
+            if (ventOn)
+            {
+                player.onAirVent = true;
+            }
             
         }
     }
@@ -53,6 +64,7 @@ public class AirVent : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             player.onAirVent = false;
+            standingOnVent = false;
         }
     }
 
