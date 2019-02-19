@@ -6,8 +6,7 @@ public class AirVent : MonoBehaviour
 {
 
     public bool isToggled;
-    [SerializeField]
-    private bool ventOn;
+    public bool ventOn;
     public float ventToggleSpeed;
     private float ventToggleCounter;
     public GameObject ventParticle;
@@ -21,6 +20,7 @@ public class AirVent : MonoBehaviour
         player = FindObjectOfType<Player>();
         ventToggleCounter = ventToggleSpeed;
         standingOnVent = false;
+        VentParticleToggle();
     }
 
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class AirVent : MonoBehaviour
         }
     }
 
-    private void VentParticleToggle()
+    public void VentParticleToggle()
     {
         if (ventOn)
         {

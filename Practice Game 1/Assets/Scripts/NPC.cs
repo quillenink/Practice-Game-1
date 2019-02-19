@@ -105,6 +105,7 @@ public class NPC : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             inRangeToTalk = true;
+            dialogueManager.dialogueText = textBox;
         }
         
     }
