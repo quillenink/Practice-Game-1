@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     //x axis movement
     public float moveSpeed;
+    private float moveVelocity;
     [SerializeField] Rigidbody2D rigidbody;
 
     //x axis facing
@@ -31,8 +32,7 @@ public class Player : MonoBehaviour
     public bool onAirVent;
     private float gravityStore;
 
-    //debugging
-    [SerializeField] float velocityTracker;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         //debugging
-        velocityTracker = rigidbody.velocity.x;
+        moveVelocity = 0f;
+
 
         if (grounded)
         {
@@ -67,13 +68,17 @@ public class Player : MonoBehaviour
         //x axis movement
         if(Input.GetKey(KeyCode.D))
         {
-            rigidbody.velocity = new Vector2(moveSpeed, rigidbody.velocity.y);
+            //rigidbody.velocity = new Vector2(moveSpeed, rigidbody.velocity.y);
+            moveVelocity = moveSpeed;
             isMoving = transform.position.x;
         } if(Input.GetAxisRaw("Horizontal") < 0)
         {
-            rigidbody.velocity = new Vector2(-moveSpeed, rigidbody.velocity.y);
+            //rigidbody.velocity = new Vector2(-moveSpeed, rigidbody.velocity.y);
+            moveVelocity = -moveSpeed;
             isMoving = transform.position.x;
         }
+
+        rigidbody.velocity = new Vector2(moveVelocity, rigidbody.velocity.y);
 
         //jump
         if (Input.GetKeyDown(KeyCode.Space) && !hasDoubleJumped)
