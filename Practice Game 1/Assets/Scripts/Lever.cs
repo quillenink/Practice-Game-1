@@ -21,11 +21,12 @@ public class Lever : MonoBehaviour
     private float textTransparency = 0f;
     public float fadeSpeed;
 
-    public Camera cam;
+    private Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
+        cam = FindObjectOfType<Camera>();
         switchedOn = false;
         switchText.color = new Color(1f, 1f, 1f, textTransparency);
     }

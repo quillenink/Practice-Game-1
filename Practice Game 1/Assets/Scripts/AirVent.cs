@@ -14,6 +14,10 @@ public class AirVent : MonoBehaviour
 
     private Player player;
 
+    //vent particle fade in/out
+    public float fadeSpeed;
+    public ParticleSystem particles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +81,7 @@ public class AirVent : MonoBehaviour
         if (!ventOn)
         {
             ventParticle.SetActive(false);
+            //particles.startSize = 0;
 
         }
     }
