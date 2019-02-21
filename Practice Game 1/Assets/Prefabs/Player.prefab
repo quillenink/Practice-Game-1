@@ -143,7 +143,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6596465568639234348}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 90f7a7b54e4372d47b47a6f97525c3f6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -185,4 +185,3 @@ MonoBehaviour:
   rigidbody: {fileID: 6596465568639234347}
   ventForce: 10
   onAirVent: 0
-  velocityTracker: 0

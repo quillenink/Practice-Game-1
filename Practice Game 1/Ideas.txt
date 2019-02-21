@@ -1,0 +1,12 @@
+Things to work on:
+- make air vent particles fade in/out
+
+
+
+
+New mechanics:
+-movable boxes
+-ropes to swing on
+
+
+
