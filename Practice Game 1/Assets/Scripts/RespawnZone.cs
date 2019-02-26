@@ -7,6 +7,8 @@ public class RespawnZone : MonoBehaviour
 
     private LevelManager levelManager;
 
+    public GameObject box;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,11 @@ public class RespawnZone : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             levelManager.RespawnPlayer();
+        }
+        if(collision.gameObject.tag == "Box")
+        {
+            collision.attachedRigidbody.velocity = new Vector2(0f, 0f);
+            collision.transform.position = collision.GetComponent<Box>().resetPosition;
         }
     }
 }

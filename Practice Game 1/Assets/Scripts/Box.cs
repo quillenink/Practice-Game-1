@@ -13,6 +13,9 @@ public class Box : MonoBehaviour
 
     private Player player;
 
+    public float xOffset;
+    public float yOffset;
+
     public Vector3 resetPosition;
 
     // Start is called before the first frame update
@@ -32,8 +35,20 @@ public class Box : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                isPickedUp = !isPickedUp;
                 ToggleBoxPickup();
+            }
+
+        }
+
+        if (isPickedUp)
+        {
+            if(player.transform.localScale.x > 0f)
+            {
+                transform.position = new Vector3(player.transform.position.x + xOffset, player.transform.position.y + yOffset);
+            }
+            if(player.transform.localScale.x < 0f)
+            {
+                transform.position = new Vector3(player.transform.position.x + -xOffset, player.transform.position.y + yOffset);
             }
         }
     }
@@ -51,22 +66,13 @@ public class Box : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             inRangeToPickup = false;
+            isPickedUp = false;
         }
     }
 
     public void ToggleBoxPickup()
     {
-        if (isPickedUp)
-        {
-            this.gameObject.transform.parent = player.gameObject.transform;
-            //rigidbody.gravityScale = 0f;
-
-        }
-        if (!isPickedUp)
-        {
-            this.gameObject.transform.parent = null;
-            //rigidbody.gravityScale = gravityStore;
-        }
+        isPickedUp = !isPickedUp;
     }
 
 }
