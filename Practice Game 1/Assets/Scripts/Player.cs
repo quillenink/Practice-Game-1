@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     private float gravityStore;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -144,6 +143,8 @@ public class Player : MonoBehaviour
         }*/
 
     }
+
+
 
 
 }

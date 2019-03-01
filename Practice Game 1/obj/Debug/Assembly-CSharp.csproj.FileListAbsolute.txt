@@ -1,0 +1,2 @@
+/Users/home/Documents/GitHub/Practice-Game-1/Practice Game 1/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/home/Documents/GitHub/Practice-Game-1/Practice Game 1/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
