@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\MainCamera.cs" />
     <Compile Include="Assets\Scripts\NPC.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerGrabber.cs" />
     <Compile Include="Assets\Scripts\RespawnZone.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/home/Documents/GitHub/Practice-Game-1/Practice Game 1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

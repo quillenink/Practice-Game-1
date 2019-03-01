@@ -1,35 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Box : MonoBehaviour
 {
+    //text prompt
+    public RectTransform textTransform;
+    public Text boxText;
+    public float textOffsetY;
+    public float fadeSpeed;
+    private float textTransparency = 0f;
+    private Camera cam;
 
-    private bool inRangeToPickup;
+    public bool inRangeToPickup;
     private bool isPickedUp;
 
     private Rigidbody2D rigidbody;
     private float gravityStore;
 
     private Player player;
+    private PlayerGrabber playerGrabber;
 
     public float xOffset;
     public float yOffset;
 
     public Vector3 resetPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
+        playerGrabber = FindObjectOfType<PlayerGrabber>();
         rigidbody = GetComponent<Rigidbody2D>();
         gravityStore = rigidbody.gravityScale;
         resetPosition = transform.position;
+
+        //text prompt
+        cam = FindObjectOfType<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //text prompt
+        textTransform.position = cam.WorldToScreenPoint(transform.position + new Vector3(0f, textOffsetY));
+        boxText.color = new Color(1f, 1f, 1f, textTransparency);
+
         //pick up/put down
         if (inRangeToPickup)
         {
@@ -37,7 +52,20 @@ public class Box : MonoBehaviour
             {
                 ToggleBoxPickup();
             }
+            //fade in text
+            if(textTransparency < 1f && !isPickedUp)
+            {
+                textTransparency += fadeSpeed * Time.deltaTime;
+            }
 
+        }
+        //fade out text
+        if (!inRangeToPickup || isPickedUp)
+        {
+            if(textTransparency > 0f)
+            {
+                textTransparency -= fadeSpeed * Time.deltaTime;
+            }
         }
 
         if (isPickedUp)
