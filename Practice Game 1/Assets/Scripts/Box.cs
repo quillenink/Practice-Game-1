@@ -74,8 +74,9 @@ public class Box : MonoBehaviour
         {
             //fall speed fix
             rigidbody.velocity = new Vector2(0f, 0f);
-
-            if(player.transform.localScale.x > 0f)
+            //transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (player.transform.localScale.x > 0f)
             {
                 transform.position = new Vector3(player.transform.position.x + xOffset, player.transform.position.y + yOffset);
             }
@@ -110,6 +111,14 @@ public class Box : MonoBehaviour
     public void ToggleBoxPickup()
     {
         isPickedUp = !isPickedUp;
+        if (isPickedUp)
+        {
+            transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        }
+        if (!isPickedUp)
+        {
+            rigidbody.constraints = RigidbodyConstraints2D.None;
+        }
     }
 
 }
