@@ -27,6 +27,8 @@ public class Box : MonoBehaviour
 
     public Vector3 resetPosition;
 
+    [SerializeField] private float yVelocityTracker;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -70,6 +72,9 @@ public class Box : MonoBehaviour
 
         if (isPickedUp)
         {
+            //fall speed fix
+            rigidbody.velocity = new Vector2(0f, 0f);
+
             if(player.transform.localScale.x > 0f)
             {
                 transform.position = new Vector3(player.transform.position.x + xOffset, player.transform.position.y + yOffset);
@@ -79,13 +84,17 @@ public class Box : MonoBehaviour
                 transform.position = new Vector3(player.transform.position.x + -xOffset, player.transform.position.y + yOffset);
             }
         }
+
+        //fixing fall speed
+        yVelocityTracker = rigidbody.velocity.y;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            inRangeToPickup = true;
+            //inRangeToPickup = true;
         }
     }
 
@@ -93,7 +102,7 @@ public class Box : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            inRangeToPickup = false;
+            //inRangeToPickup = false;
             isPickedUp = false;
         }
     }

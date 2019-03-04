@@ -22,14 +22,18 @@ public class PlayerGrabber : MonoBehaviour
     {
         if (collision.gameObject.tag == "Box")
         {
-            inRangeToGrab = true;
+            //inRangeToGrab = true;
+
+            collision.GetComponent<Box>().inRangeToPickup = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Box")
         {
-            inRangeToGrab = false;
+            //inRangeToGrab = false;
+
+            collision.GetComponent<Box>().inRangeToPickup = false;
         }
     }
 

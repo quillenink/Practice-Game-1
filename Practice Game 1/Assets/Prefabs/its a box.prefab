@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 673252687199320708}
   - component: {fileID: 673252687199320710}
   - component: {fileID: 673252687199320706}
-  - component: {fileID: 673252687199320705}
   - component: {fileID: 673252687199320709}
   m_Layer: 8
   m_Name: its a box
@@ -304,35 +303,11 @@ MonoBehaviour:
   boxText: {fileID: 388289673}
   textOffsetY: 1
   fadeSpeed: 0.8
+  inRangeToPickup: 0
   xOffset: 0.75
   yOffset: 0.25
   resetPosition: {x: 0, y: 0, z: 0}
---- !u!61 &673252687199320705
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673252687199320711}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.25, y: 0.4}
-  m_EdgeRadius: 0
+  yVelocityTracker: 0
 --- !u!50 &673252687199320709
 Rigidbody2D:
   serializedVersion: 4
