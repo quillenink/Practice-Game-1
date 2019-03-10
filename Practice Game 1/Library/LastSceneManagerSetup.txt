@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/TheGiantDoor.unity
+- path: Assets/Scenes/MapMockup.unity
   isLoaded: 1
   isActive: 1

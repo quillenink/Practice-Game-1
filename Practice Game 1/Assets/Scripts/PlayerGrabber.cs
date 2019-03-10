@@ -26,6 +26,10 @@ public class PlayerGrabber : MonoBehaviour
 
             collision.GetComponent<Box>().inRangeToPickup = true;
         }
+        if (collision.gameObject.tag == "Lever")
+        {
+            collision.GetComponent<Lever>().inRangeToSwitch = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -34,6 +38,10 @@ public class PlayerGrabber : MonoBehaviour
             //inRangeToGrab = false;
 
             collision.GetComponent<Box>().inRangeToPickup = false;
+        }
+        if (collision.gameObject.tag == "Lever")
+        {
+            collision.GetComponent<Lever>().inRangeToSwitch = false;
         }
     }
 

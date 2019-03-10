@@ -8,7 +8,7 @@ public class Lever : MonoBehaviour
 
     [SerializeField]
     private bool switchedOn;
-    private bool inRangeToSwitch;
+    public bool inRangeToSwitch;
 
     public SpriteRenderer leverSprite;
 
@@ -67,6 +67,7 @@ public class Lever : MonoBehaviour
 
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
@@ -81,7 +82,7 @@ public class Lever : MonoBehaviour
         {
             inRangeToSwitch = false;
         }
-    }
+    }*/
 
     private void ToggleSwitch()
     {

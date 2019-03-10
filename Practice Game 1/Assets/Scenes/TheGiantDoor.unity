@@ -4594,11 +4594,6 @@ PrefabInstance:
       propertyPath: airVent
       value: 
       objectReference: {fileID: 947426606}
-    - target: {fileID: 3716259597742075213, guid: f339f7d91f24e492a9e0ebb669c519c6,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f339f7d91f24e492a9e0ebb669c519c6, type: 3}
 --- !u!1001 &4077560180330202794
