@@ -1,12 +1,11 @@
 Things to work on:
 - make air vent particles fade in/out
-
+- line renderer to make rope look continuous?
 
 
 
 New mechanics:
--movable boxes
--ropes to swing on
-
+- ropes to swing on
+- buttons to set boxes on/stand on
 
 
