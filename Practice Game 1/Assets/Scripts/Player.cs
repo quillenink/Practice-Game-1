@@ -101,21 +101,30 @@ public class Player : MonoBehaviour
         }
 
         //swinging from rope
-        if (inRangeToSwing)
+        if (isSwingingFromRope)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                isSwingingFromRope = !isSwingingFromRope;
+                isSwingingFromRope = false;
+                LetGoOfRope();
+            }
+        }
+        if (inRangeToSwing && !isSwingingFromRope)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                isSwingingFromRope = true;
                 if (isSwingingFromRope)
                 {
                     GrabRope(ropeLinkToGrab);
                 }
-                if (!isSwingingFromRope)
+                /*if (!isSwingingFromRope)
                 {
                     LetGoOfRope();
-                }
+                }*/
             }
         }
+        
 
         
         
