@@ -32,12 +32,23 @@ public class Player : MonoBehaviour
     public bool onAirVent;
     private float gravityStore;
 
+    //swinging from rope
+    public Vector2 offsetFromRope;
+    public bool inRangeToSwing;
+    public bool isSwingingFromRope;
+    private HingeJoint2D joint;
+    public Rigidbody2D ropeLinkToGrab;
+
 
     // Start is called before the first frame update
     void Start()
     {
         gravityStore = rigidbody.gravityScale;
         onAirVent = false;
+        inRangeToSwing = false;
+        isSwingingFromRope = false;
+        joint = gameObject.GetComponent<HingeJoint2D>();
+        joint.enabled = false;
     }
 
     // Update is called once per frame
@@ -89,25 +100,23 @@ public class Player : MonoBehaviour
             }
         }
 
-        /*if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        //swinging from rope
+        if (inRangeToSwing)
         {
-            jumping = true;
-            jumpTime = jumpLength;
-        }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            jumpTime -= Time.deltaTime * 0.5f;
-            Debug.Log(jumpTime);
-            if(jumpTime <= 0)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                jumping = false;
-                
+                isSwingingFromRope = !isSwingingFromRope;
+                if (isSwingingFromRope)
+                {
+                    GrabRope(ropeLinkToGrab);
+                }
+                if (!isSwingingFromRope)
+                {
+                    LetGoOfRope();
+                }
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            jumping = false;
-        }*/
+
         
         
     }
@@ -142,6 +151,21 @@ public class Player : MonoBehaviour
             //rigidbody.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
         }*/
 
+    }
+
+    public void GrabRope(Rigidbody2D ropeLink)
+    {
+        joint.enabled = true;
+        joint.autoConfigureConnectedAnchor = false;
+        joint.connectedBody = ropeLink;
+        joint.anchor = Vector2.zero;
+        joint.connectedAnchor = offsetFromRope;
+    }
+    public void LetGoOfRope()
+    {
+        joint.connectedBody = null;
+        joint.enabled = false;
+        //gameObject.
     }
 
 

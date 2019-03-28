@@ -8,6 +8,7 @@ TagManager:
   - AirVent
   - Box
   - Lever
+  - Rope
   layers:
   - Default
   - TransparentFX
