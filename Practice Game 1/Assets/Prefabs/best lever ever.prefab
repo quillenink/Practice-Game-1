@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchedOn: 0
+  inRangeToSwitch: 0
   leverSprite: {fileID: 3716259597742075210}
   airVent: {fileID: 0}
   textTransform: {fileID: 3716259597825182248}
@@ -125,7 +126,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.5}
+  m_Size: {x: 1.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &3716259597825182247
 GameObject:

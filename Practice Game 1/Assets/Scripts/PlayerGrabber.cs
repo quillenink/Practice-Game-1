@@ -28,6 +28,10 @@ public class PlayerGrabber : MonoBehaviour
             player.inRangeToSwing = true;
             player.ropeLinkToGrab = collision.attachedRigidbody;
         }
+        if (collision.gameObject.tag == "NPC")
+        {
+            collision.GetComponent<NPC>().inRangeToTalk = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -45,6 +49,10 @@ public class PlayerGrabber : MonoBehaviour
         {
             player.inRangeToSwing = false;
             player.ropeLinkToGrab = null;
+        }
+        if(collision.gameObject.tag == "NPC")
+        {
+            collision.GetComponent<NPC>().inRangeToTalk = false;
         }
     }
 

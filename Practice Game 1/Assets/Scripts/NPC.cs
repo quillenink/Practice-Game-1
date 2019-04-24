@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour
     private DialogueManager dialogueManager;
 
     //press E to talk
-    private bool inRangeToTalk;
+    public bool inRangeToTalk;
     private bool isTalking;
     public Text textBox;
     public RectTransform textBoxTransform;
@@ -104,7 +104,7 @@ public class NPC : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            inRangeToTalk = true;
+            //inRangeToTalk = true;
             dialogueManager.dialogueText = textBox;
         }
         
@@ -114,7 +114,7 @@ public class NPC : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            inRangeToTalk = false;
+            //inRangeToTalk = false;
         }
     }
 

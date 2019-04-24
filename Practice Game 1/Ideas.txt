@@ -7,5 +7,6 @@ Things to work on:
 New mechanics:
 - ropes to swing on
 - buttons to set boxes on/stand on
+- floating pick-up item? key?
 
 

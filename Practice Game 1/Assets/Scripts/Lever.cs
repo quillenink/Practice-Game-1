@@ -28,6 +28,7 @@ public class Lever : MonoBehaviour
     {
         cam = FindObjectOfType<Camera>();
         switchedOn = false;
+        ToggleSwitch();
         switchText.color = new Color(1f, 1f, 1f, textTransparency);
     }
 
@@ -89,14 +90,16 @@ public class Lever : MonoBehaviour
         if (switchedOn)
         {
             leverSprite.flipX = true;
+            airVent.leverOn = true;
             airVent.ventOn = true;
-            airVent.VentParticleToggle();
+            //airVent.VentParticleToggle();
         }
         if (!switchedOn)
         {
             leverSprite.flipX = false;
+            airVent.leverOn = false;
             airVent.ventOn = false;
-            airVent.VentParticleToggle();
+            //airVent.VentParticleToggle();
         }
     }
 }
