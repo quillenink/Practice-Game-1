@@ -19,7 +19,7 @@ public class AirVent : MonoBehaviour
     //vent particle fade in/out
     public float fadeOutSpeed;
     public float fadeInSpeed;
-    public ParticleSystem.MainModule ventParticle;
+    public GameObject ventParticle;
     public float ventParticleMaxSize;
     private float currentParticleSize;
 
@@ -30,7 +30,7 @@ public class AirVent : MonoBehaviour
         ventToggleCounter = ventToggleSpeed;
         standingOnVent = false;
         //leverOn = false;
-        //VentParticleToggle();
+        VentParticleToggle();
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class AirVent : MonoBehaviour
             {
                 ventOn = !ventOn;
                 ventToggleCounter = ventToggleSpeed;
-                //VentParticleToggle();
+                VentParticleToggle();
                 if(standingOnVent && ventOn)
                 {
                     player.onAirVent = true;
@@ -53,30 +53,32 @@ public class AirVent : MonoBehaviour
             }
             
         }
-        if(isToggled && ventOn)
+        /*if(ventOn)
         {
             if(currentParticleSize < ventParticleMaxSize)
             {
-                currentParticleSize += ventParticleMaxSize * fadeInSpeed * Time.deltaTime;
-                ventParticle.startSize = new ParticleSystem.MinMaxCurve(currentParticleSize);
+                currentParticleSize += fadeInSpeed * Time.deltaTime;
+                ParticleSystem.MainModule VPMain = ventParticle.main;
+                VPMain.startSize = currentParticleSize;
             }
             if(currentParticleSize > ventParticleMaxSize)
             {
                 currentParticleSize = ventParticleMaxSize;
             }
         }
-        if(isToggled && !ventOn)
+        if(!ventOn)
         {
             if(currentParticleSize > 0)
             {
-                currentParticleSize -= ventParticleMaxSize * fadeOutSpeed * Time.deltaTime;
-                ventParticle.startSize = new ParticleSystem.MinMaxCurve(currentParticleSize);
+                currentParticleSize -= fadeOutSpeed * Time.deltaTime;
+                ParticleSystem.MainModule VPMain = ventParticle.main;
+                VPMain.startSize = currentParticleSize;
             }
             if(currentParticleSize < 0)
             {
                 currentParticleSize = 0;
             }
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -102,18 +104,18 @@ public class AirVent : MonoBehaviour
         }
     }
 
-    /*public void VentParticleToggle()
+    public void VentParticleToggle()
     {
         if (ventOn)
         {
-            //ventParticle.SetActive(true);
+            ventParticle.SetActive(true);
         }
         if (!ventOn)
         {
-            //ventParticle.SetActive(false);
+            ventParticle.SetActive(false);
             //particles.startSize = 0;
 
         }
-    }*/
+    }
 
 }

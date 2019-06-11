@@ -6311,6 +6311,21 @@ PrefabInstance:
       propertyPath: ventToggleSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2921446968981064745, guid: c0a0d6cd7793cee479d63658676c22fb,
+        type: 3}
+      propertyPath: ventParticleMaxSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921446968981064745, guid: c0a0d6cd7793cee479d63658676c22fb,
+        type: 3}
+      propertyPath: fadeInSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921446968981064745, guid: c0a0d6cd7793cee479d63658676c22fb,
+        type: 3}
+      propertyPath: fadeOutSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2921446968981064747, guid: c0a0d6cd7793cee479d63658676c22fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6364,6 +6379,21 @@ PrefabInstance:
     - target: {fileID: 2921446968981064747, guid: c0a0d6cd7793cee479d63658676c22fb,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921446969172250209, guid: c0a0d6cd7793cee479d63658676c22fb,
+        type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921446969172250209, guid: c0a0d6cd7793cee479d63658676c22fb,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921446969172250209, guid: c0a0d6cd7793cee479d63658676c22fb,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
