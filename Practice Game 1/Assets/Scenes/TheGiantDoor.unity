@@ -3790,12 +3790,57 @@ PrefabInstance:
     - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
         type: 3}
       propertyPath: floatDistance
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
         type: 3}
       propertyPath: floatBuffer
-      value: 0.5
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: bounceForceDown
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: bounceForceUp
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: bounceGravity
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: slowRate
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: haltTimer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320709, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320709, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320709, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: m_Mass
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320709, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b1850cc2b14458cbe1f08003e66070, type: 3}

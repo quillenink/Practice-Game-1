@@ -39,8 +39,18 @@ public class Box : MonoBehaviour
     public bool spawnsFloating;
     public float floatSpeed;
     public float floatDistance;
-    private float floatHeight;
+    private float floatHeightTop;
+    private float floatHeightBottom;
     public float floatBuffer;
+    public float bounceForceDown;
+    public float bounceForceUp;
+    public float bounceGravity;
+    private bool hasReachedTop;
+    //floating box wind resistance
+    public float slowRate;
+    private bool isMovingOnX;
+    public float haltTimer;
+    private float xMovementCounter;
 
     void Start()
     {
@@ -51,15 +61,20 @@ public class Box : MonoBehaviour
         onAirVent = false;
         resetPosition = transform.position;
         airVent = null;
-        if (spawnsFloating)
+        if (floatingBox)
         {
-            floatHeight = this.transform.position.y + floatDistance;
+            isMovingOnX = false;
+            xMovementCounter = haltTimer;
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (spawnsFloating)
+            {
+                floatHeightTop = this.transform.position.y + floatDistance;
+            }
+            else
+            {
+                floatHeightTop = this.transform.position.y;
+            }
         }
-        else
-        {
-            floatHeight = this.transform.position.y;
-        }
-
         //text prompt
         cam = FindObjectOfType<Camera>();
     }
@@ -116,7 +131,7 @@ public class Box : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isPickedUp)
+        if(!isPickedUp && !floatingBox)
         {
             if (onAirVent)
             {
@@ -137,17 +152,36 @@ public class Box : MonoBehaviour
         }
         if(!isPickedUp && floatingBox)
         {
-            if(transform.position.y < floatHeight)
+            //floating
+            if(transform.position.y >= floatHeightTop)
             {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, floatSpeed);
+                SetBoxGravity(-bounceGravity);
+                BoxPush(rigidbody.velocity.x, -bounceForceDown);
+                hasReachedTop = true;
             }
-            if(transform.position.y > floatHeight + floatBuffer)
+            if(transform.position.y <= floatHeightBottom && hasReachedTop)
             {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, -floatSpeed);
+                SetBoxGravity(bounceGravity);
+                BoxPush(rigidbody.velocity.x, bounceForceUp);
             }
-            if(transform.position.y <= floatHeight + floatBuffer && transform.position.y > floatHeight)
+            //wind resistance
+            if(rigidbody.velocity.x > 0f)
             {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0f);
+                isMovingOnX = true;
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x - slowRate, rigidbody.velocity.y);
+            }
+            if(rigidbody.velocity.x < 0f)
+            {
+                isMovingOnX = true;
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x + slowRate, rigidbody.velocity.y);
+            }
+            if (isMovingOnX)
+            {
+                xMovementCounter -= Time.deltaTime;
+            }
+            if(xMovementCounter <= 0)
+            {
+                ResetMovementCounter();
             }
         }
     }
@@ -180,13 +214,23 @@ public class Box : MonoBehaviour
         if (isPickedUp)
         {
             transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            if (floatingBox)
+            {
+                hasReachedTop = false;
+            }
         }
         if (!isPickedUp)
         {
-            rigidbody.constraints = RigidbodyConstraints2D.None;
+            if (!floatingBox)
+            {
+                rigidbody.constraints = RigidbodyConstraints2D.None;
+            }
             if (floatingBox)
             {
-                floatHeight = this.transform.position.y + floatDistance;
+                floatHeightTop = this.transform.position.y + floatDistance;
+                floatHeightBottom = transform.position.y + floatDistance - floatBuffer;
+                SetBoxGravity(bounceGravity);
+                BoxPush(rigidbody.velocity.x, floatSpeed);
             }
         }
     }
@@ -198,6 +242,16 @@ public class Box : MonoBehaviour
     public void ResetBoxGravity()
     {
         rigidbody.gravityScale = gravityStore;
+    }
+    public void BoxPush(float forceToPushX, float forceToPushY)
+    {
+        rigidbody.velocity = new Vector2(forceToPushX, forceToPushY);
+    }
+    private void ResetMovementCounter()
+    {
+        rigidbody.velocity = new Vector2(0f, rigidbody.velocity.y);
+        isMovingOnX = false;
+        xMovementCounter = haltTimer;
     }
 
 }
