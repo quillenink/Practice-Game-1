@@ -29,13 +29,36 @@ public class Box : MonoBehaviour
 
     [SerializeField] private float yVelocityTracker;
 
+    //bouncing on air vent
+    public float ventForce;
+    public bool onAirVent;
+    private AirVent airVent;
+
+    //floating box
+    public bool floatingBox;
+    public bool spawnsFloating;
+    public float floatSpeed;
+    public float floatDistance;
+    private float floatHeight;
+    public float floatBuffer;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
         playerGrabber = FindObjectOfType<PlayerGrabber>();
         rigidbody = GetComponent<Rigidbody2D>();
         gravityStore = rigidbody.gravityScale;
+        onAirVent = false;
         resetPosition = transform.position;
+        airVent = null;
+        if (spawnsFloating)
+        {
+            floatHeight = this.transform.position.y + floatDistance;
+        }
+        else
+        {
+            floatHeight = this.transform.position.y;
+        }
 
         //text prompt
         cam = FindObjectOfType<Camera>();
@@ -91,11 +114,50 @@ public class Box : MonoBehaviour
         
     }
 
+    private void FixedUpdate()
+    {
+        if(!isPickedUp)
+        {
+            if (onAirVent)
+            {
+                if (airVent.ventOn)
+                {
+                    SetBoxGravity(0f);
+                    rigidbody.velocity = new Vector2(rigidbody.velocity.x, ventForce);
+                }
+                if (!airVent.ventOn)
+                {
+                    ResetBoxGravity();
+                }
+            }
+            if (!onAirVent)
+            {
+                ResetBoxGravity();
+            }
+        }
+        if(!isPickedUp && floatingBox)
+        {
+            if(transform.position.y < floatHeight)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, floatSpeed);
+            }
+            if(transform.position.y > floatHeight + floatBuffer)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, -floatSpeed);
+            }
+            if(transform.position.y <= floatHeight + floatBuffer && transform.position.y > floatHeight)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0f);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "AirVent")
         {
-            //inRangeToPickup = true;
+            onAirVent = true;
+            airVent = collision.GetComponent<AirVent>();
         }
     }
 
@@ -105,6 +167,10 @@ public class Box : MonoBehaviour
         {
             //inRangeToPickup = false;
             isPickedUp = false;
+        }
+        if(collision.gameObject.tag == "AirVent")
+        {
+            onAirVent = false;
         }
     }
 
@@ -118,7 +184,20 @@ public class Box : MonoBehaviour
         if (!isPickedUp)
         {
             rigidbody.constraints = RigidbodyConstraints2D.None;
+            if (floatingBox)
+            {
+                floatHeight = this.transform.position.y + floatDistance;
+            }
         }
+    }
+
+    public void SetBoxGravity(float targetGravity)
+    {
+        rigidbody.gravityScale = targetGravity;
+    }
+    public void ResetBoxGravity()
+    {
+        rigidbody.gravityScale = gravityStore;
     }
 
 }

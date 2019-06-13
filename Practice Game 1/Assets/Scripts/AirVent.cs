@@ -93,6 +93,13 @@ public class AirVent : MonoBehaviour
             }
             
         }
+        /*if(collision.gameObject.tag == "Box")
+        {
+            if (ventOn)
+            {
+                collision.GetComponent<Box>().onAirVent = true;
+            }
+        }*/
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -102,6 +109,10 @@ public class AirVent : MonoBehaviour
             player.onAirVent = false;
             standingOnVent = false;
         }
+        /*if(collision.gameObject.tag == "Box")
+        {
+            collision.GetComponent<Box>().onAirVent = false;
+        }*/
     }
 
     public void VentParticleToggle()

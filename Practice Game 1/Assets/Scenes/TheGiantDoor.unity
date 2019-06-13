@@ -3720,12 +3720,12 @@ PrefabInstance:
     - target: {fileID: 673252687199320707, guid: 50b1850cc2b14458cbe1f08003e66070,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59
+      value: 21.93
       objectReference: {fileID: 0}
     - target: {fileID: 673252687199320707, guid: 50b1850cc2b14458cbe1f08003e66070,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 3.69
       objectReference: {fileID: 0}
     - target: {fileID: 673252687199320707, guid: 50b1850cc2b14458cbe1f08003e66070,
         type: 3}
@@ -3771,6 +3771,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: ventForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: floatingBox
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: floatSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: floatDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 673252687199320706, guid: 50b1850cc2b14458cbe1f08003e66070,
+        type: 3}
+      propertyPath: floatBuffer
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b1850cc2b14458cbe1f08003e66070, type: 3}
@@ -5033,7 +5058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1535224861
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6983,7 +7008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2028876660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7763,12 +7788,12 @@ PrefabInstance:
     - target: {fileID: 6596465568639234345, guid: a53a929d80e7f6b47a4b4b10351aa58a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.7
+      value: 23.818
       objectReference: {fileID: 0}
     - target: {fileID: 6596465568639234345, guid: a53a929d80e7f6b47a4b4b10351aa58a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.61
+      value: 3.529
       objectReference: {fileID: 0}
     - target: {fileID: 6596465568639234345, guid: a53a929d80e7f6b47a4b4b10351aa58a,
         type: 3}
