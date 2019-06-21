@@ -155,7 +155,12 @@ MonoBehaviour:
   isToggled: 1
   ventOn: 1
   ventToggleSpeed: 4
+  standingOnVent: 0
+  leverOn: 1
+  fadeOutSpeed: 0
+  fadeInSpeed: 0
   ventParticle: {fileID: 2921446969172250210}
+  ventParticleMaxSize: 0
 --- !u!61 &2921446968981064744
 BoxCollider2D:
   m_ObjectHideFlags: 0

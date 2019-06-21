@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class Lever : MonoBehaviour
 {
-
-    [SerializeField]
-    private bool switchedOn;
+    public bool switchedOn;
     public bool inRangeToSwitch;
 
     public SpriteRenderer leverSprite;
@@ -68,38 +66,31 @@ public class Lever : MonoBehaviour
 
     }
 
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Box")
         {
-            inRangeToSwitch = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            inRangeToSwitch = false;
+            switchedOn = !switchedOn;
+            ToggleSwitch();
         }
     }*/
-
-    private void ToggleSwitch()
+    
+    public void ToggleSwitch()
     {
         if (switchedOn)
         {
             leverSprite.flipX = true;
             airVent.leverOn = true;
             airVent.ventOn = true;
-            //airVent.VentParticleToggle();
+            airVent.VentParticleToggle();
         }
         if (!switchedOn)
         {
             leverSprite.flipX = false;
             airVent.leverOn = false;
             airVent.ventOn = false;
-            //airVent.VentParticleToggle();
+            airVent.VentParticleToggle();
         }
     }
 }
